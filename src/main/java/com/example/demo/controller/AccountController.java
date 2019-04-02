@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.common.ErrorsMap;
 import com.example.demo.common.GsonUtil;
 import com.example.demo.common.JsonResult;
+import com.example.demo.model.Account;
+import com.example.demo.repository.AccountRespository;
 import com.example.demo.service.UserService;
 import com.example.demo.validator.UserValidator;
 

@@ -3,8 +3,8 @@ package com.example.demo.servicelmpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Account;
-import com.example.demo.AccountRespository;
+import com.example.demo.model.Account;
+import com.example.demo.repository.AccountRespository;
 import com.example.demo.service.UserService;
 
 import lombok.AllArgsConstructor;
