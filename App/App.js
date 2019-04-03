@@ -6,8 +6,10 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import { BaseService } from './src/api/BaseService';
+import ConfigAPI from './src/api/ConfigAPI';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -17,6 +19,20 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+    let params = {
+      [ConfigAPI.PARAM_METHOD]: ConfigAPI.METHOD_LOGIN,
+      [ConfigAPI.PARAM_USERNAME]: "nguyentu",
+      [ConfigAPI.PARAM_PASSWORD]: "123456",
+    };
+    let loginService = new BaseService();
+    loginService.setParam(params);
+    loginService.setCallback(this);
+    loginService.requestData(BaseService.METHOD.POST);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -25,6 +41,17 @@ export default class App extends Component {
         <Text style={styles.instructions}>{instructions}</Text>
       </View>
     );
+  }
+
+  async onSuccess(code, message, data, method) {
+    if (method == ConfigAPI.METHOD_LOGIN) {
+      alert("METHOD_LOGIN onSuccess"  + JSON.stringify(data))
+    }
+  }
+  async onFail(code, message, method) {
+    if (method == ConfigAPI.METHOD_LOGIN) {
+      alert("METHOD_LOGIN onFail" + JSON.stringify(message))
+    }
   }
 }
 
