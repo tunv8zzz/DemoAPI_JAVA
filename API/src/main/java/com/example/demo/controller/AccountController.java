@@ -61,7 +61,7 @@ public class AccountController {
 		return accountRespository.save(account);
 	}
 
-	@PostMapping("/")
+	@PostMapping("/login")
 	public JsonResult login(@RequestParam Map<String, String> body) {
 		String username = body.get("username");
 		String password = body.get("password");

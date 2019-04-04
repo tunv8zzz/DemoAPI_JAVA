@@ -41,7 +41,8 @@ export function objectToURLParameters(params) {
 export function login(methodType, data: Object) {
   return dispatch => {
     dispatch(isLoading(true));
-    return RNFetchBlob.config({ trusty: true }).fetch(methodType, ConfigAPI.DOMAIN, {
+    let api = data[ConfigAPI.PARAM_METHOD]
+    return RNFetchBlob.config({ trusty: true }).fetch(methodType, ConfigAPI.DOMAIN + api, {
       "Content-Type": "application/x-www-form-urlencoded"
     }, objectToURLParameters(data))
       .then((res) => {
